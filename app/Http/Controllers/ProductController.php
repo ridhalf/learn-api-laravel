@@ -35,4 +35,29 @@ class ProductController extends Controller
             ]);
         }
     }
+
+    public function getDetailProduct($id)
+    {
+        $product = Product::where('id', $id)->select(['id', 'kategori', 'nama'])->get();
+        if (count($product) != 0) {
+            return response()->json([
+                'response' => [
+                    'product' => $product,
+
+                ],
+                'metadata' => [
+                    'message' => 'OK',
+                    'code' => 200
+                ]
+            ]);
+        } else {
+            return response()->json([
+                'response' => ['message' => 'product tidak ditemukan'],
+                'metadata' => [
+                    'message' => 'OK',
+                    'code' => 200
+                ]
+            ]);
+        }
+    }
 }

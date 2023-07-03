@@ -37,4 +37,5 @@ $router->group([
     $router->post('user-profile', 'AuthController@me');
 
     $router->post('get-all-products', 'ProductController@getAllProducts');
+    $router->post('get-detail-products/{id}', 'ProductController@getDetailProduct');
 });
